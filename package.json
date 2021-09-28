@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/abigailroberg/bait-and-tracker#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
     "mysql2": "^2.3.0",
     "sequelize": "^6.6.5"
   }
