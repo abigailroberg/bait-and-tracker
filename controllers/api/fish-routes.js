@@ -10,7 +10,14 @@ const { Competitor, Fish } = require('../../models')
 router.get('/', (req, res) => {
     //get all fish caught with corresponding competitor usernames
     Fish.findAll({
-        /*sub query-incldue: [competitor username here]*/
+        attributes: ['length', 'weight', 'picture', 'competitor_id'],
+        order: [['weight', 'DESC']],
+        include: [
+            {
+                model: Competitor,
+                attributes: ['username', 'name']
+            }
+        ]
     })
     .then(dbFishData => res.json(dbFishData))
     .catch(err => {
@@ -21,12 +28,18 @@ router.get('/', (req, res) => {
 
 //GET route for a single fish caught : /api/fishCaught/:id
 router.get('/:id', (req, res) => {
-    //get one fish with corresponding competitor username
+    //get one fish with corresponding competitor username and name
     Fish.findOne({
         where: {
             id: req.params.id
-        }
-        /*sub query-include: [competitor username]*/
+        },
+        attributes: ['length', 'weight', 'picture', 'competitor_id'],
+        include: [
+            {
+                model: Competitor,
+                attributes: ['username', 'name']
+            }
+        ]
     })
     .then(dbFishData => {
         if(!dbFishData){

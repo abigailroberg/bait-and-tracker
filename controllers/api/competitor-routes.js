@@ -10,8 +10,16 @@ const { Competitor, Fish } = require('../../models');
 router.get('/', (req, res) => {
     //get all competitors with corresponding fish caught for each competitor
     Competitor.findAll({
-        /*attributes: [competitor attributes desired],
-        sub query-include: [fish attributes here, number of fish, biggest fish, etc.]*/
+        attributes: ['id', 'name', 'email', 'phone', 'username'],
+        //should we order the response in terms of which parameter? I chose weight here...
+        order: [['id', 'DESC']],
+        include: [
+            {
+                model: Fish,
+                attributes: ['length', 'weight', 'picture'],
+                order: [['weight', 'DESC']]
+            }
+        ]
     })
     .then(dbCompetitorData => res.json(dbCompetitorData))
     .catch(err => {
@@ -26,8 +34,14 @@ router.get('/:id', (req, res) => {
     Competitor.findOne({
         where: {
             id: req.params.id
-        }
-    /*attributes: [fish attributes here]*/
+        },
+        attributes: ['id', 'name', 'email', 'phone', 'username'],
+        include: [
+            {
+                model: Fish,
+                attributes: ['length', 'weight', 'picture'],
+            }
+        ]
     })
     .then(dbCompetitorData => {
         if(!dbCompetitorData){
