@@ -10,7 +10,7 @@ const { Competitor, Fish } = require('../../models');
 router.get('/', (req, res) => {
     //get all competitors with corresponding fish caught for each competitor
     Competitor.findAll({
-        attributes: ['id', 'name', 'email', 'phone', 'username'],
+        attributes: ['id', 'name', 'email', 'phone'],
         //should we order the response in terms of which parameter? I chose weight here...
         order: [['id', 'DESC']],
         include: [
@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        attributes: ['id', 'name', 'email', 'phone', 'username'],
+        attributes: ['id', 'name', 'email', 'phone'],
         include: [
             {
                 model: Fish,
@@ -63,9 +63,7 @@ router.post('/', ({body}, res) => {
         name: body.name,
         email: body.email,
         phone: body.phone,
-        username: body.username,
         password: body.password
-        //do we want to allow for the creation of fish with the creation of a new competitor?
     })
     .then(dbCompetitorData => res.json(dbCompetitorData))
     .catch(err => {

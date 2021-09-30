@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
         include: [
             {
                 model: Competitor,
-                attributes: ['username', 'name']
+                attributes: ['name']
             }
         ]
     })
@@ -37,7 +37,7 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 model: Competitor,
-                attributes: ['username', 'name']
+                attributes: ['name']
             }
         ]
     })
