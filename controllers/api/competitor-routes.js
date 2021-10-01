@@ -100,13 +100,14 @@ router.post('/login', (req, res) => {
       return;
     }
 
-    req.session.save(() => {
-      req.session.user_id = dbCompetitorData.id;
-      req.session.email = dbCompetitorData.email;
-      req.session.loggedIn = true;
+    // req.session.save(() => {
+    //   req.session.user_id = dbCompetitorData.id;
+    //   req.session.email = dbCompetitorData.email;
+    //   req.session.loggedIn = true;
 
-      res.json({ user: dbCompetitorData, message: 'you are now logged in' });
-    });
+    //   res.json({ user: dbCompetitorData, message: 'you are now logged in' });
+    // });
+    res.json({ user: dbCompetitorData, message: 'you are now logged in' });
   });
 });
 
