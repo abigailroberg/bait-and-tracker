@@ -10,6 +10,8 @@
   --bronze: #B38E6C;
 }
 
+/* Base typography */
+
 body {
   background-color: var(--darkest-gray);
 }
@@ -19,6 +21,7 @@ h1 {
   font-weight: 700;
   font-size: 2.375em;
   color: #fff;
+  padding-top: 32px;
 }
 
 h2 {
@@ -49,6 +52,8 @@ th {
   color: var(--light-gray);
 }
 
+/* Trophies */
+
 .gold {
   color: var(--gold);
 }
@@ -61,6 +66,45 @@ th {
   color: var(--bronze);
 }
 
+/* Navbar styling */
+
+.navbar {
+  border-bottom: 1px solid #fff;
+}
+
+.navbar-dark .navbar-brand, .navbar-link, .navbar-link:hover, .navbar-dark .navbar-brand:hover {
+  color: var(--light-gray);
+}
+
+.navbar-link {
+  text-decoration: none;
+  margin: 16px;
+  transition: opacity 0.25s;
+}
+
+.navbar-link:hover {
+  opacity: 0.75;
+}
+
 .navbar-collapse {
   flex-grow: 0;
+}
+
+.navbar-brand {
+  font-weight: 400;
+}
+
+.navbar-brand span {
+  padding-left: 8px;
+  font-weight: 700;
+}
+
+.navbar-bg {
+  background-color: var(--darkest-gray);
+}
+
+/* Table styles */
+td img {
+  border-radius: 4px;
+  margin: 4px;
 }
