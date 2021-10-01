@@ -111,6 +111,18 @@ router.post('/login', (req, res) => {
   });
 });
 
+// logout route /competitors/logout
+// router.post('/logout', (req, res) => {
+//   if (req.session.loggedIn) {
+//     req.session.destroy(() => {
+//       res.status(204).end();
+//     });
+//   }
+//   else {
+//     res.status(404).end();
+//   }
+// });
+
 //PUT route to update competitors by id : /api/competitors/:id
 router.put('/:id', (req, res) => {
     //expect {name: 'STRING', email 'STRING', phone: 'STRING', username: 'STRING', password: 'STRING'}
