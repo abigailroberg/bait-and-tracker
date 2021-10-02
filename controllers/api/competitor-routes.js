@@ -92,6 +92,7 @@ router.post('/login', (req, res) => {
       res.status(400).json({ message: 'no user with that email address' });
       return;
     }
+    console.log("LOOK I AM A CONSOLE LOG", req)
 
     const validPassword = dbCompetitorData.checkPassword(req.body.password);
 
@@ -100,14 +101,15 @@ router.post('/login', (req, res) => {
       return;
     }
 
-    // req.session.save(() => {
-    //   req.session.user_id = dbCompetitorData.id;
-    //   req.session.email = dbCompetitorData.email;
-    //   req.session.loggedIn = true;
+    
+    req.session.save(() => {
+      req.session.user_id = dbCompetitorData.id;
+      req.session.email = dbCompetitorData.email;
+      req.session.loggedIn = true;
 
-    //   res.json({ user: dbCompetitorData, message: 'you are now logged in' });
-    // });
-    res.json({ user: dbCompetitorData, message: 'you are now logged in' });
+      res.json({ user: dbCompetitorData, message: 'you are now logged in' });
+    });
+    // res.json({ user: dbCompetitorData, message: 'you are now logged in' });
   });
 });
 
