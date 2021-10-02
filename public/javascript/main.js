@@ -5,10 +5,6 @@ document.getElementById("date").innerHTML = date;
 
 const currentPage = location.href;
 const navItems = document.getElementsByClassName('navbar-link');
-//const navLength = navItems.length;
-
-//console.log(navLength);
-console.log(navItems[0].href);
 
 for (let i = 0; i < navItems.length; i++) {
   if(navItems[i].href === currentPage) {
