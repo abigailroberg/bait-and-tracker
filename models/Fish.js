@@ -3,6 +3,7 @@ const sequelize = require('../config/connection')
 
 class Fish extends Model {}
 
+// Need to mention that we need to handle the option to show multiple fish in the leaderboard
 Fish.init(
     {
         id: {
