@@ -137,10 +137,12 @@ td img {
   border-bottom-color: rgba(255,255,255,0.15);
 }
 
-.table > :not(caption) > * > * {
-  padding: 0.75rem 1.5rem;
-}
-
 .bi-trophy-fill {
   padding-right: 4px;
+}
+
+@media (min-width: 768px) {
+  .table > :not(caption) > * > * {
+    padding: 0.75rem 1.5rem;
+  }
 }
