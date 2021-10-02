@@ -1,5 +1,7 @@
 const express = require('express');
-const controllers = require('./controllers/');
+const controllers = require('./controllers');
+const path = require ('path');
+
 
 // sequelize here
 const sequelize = require('./config/connection')
@@ -11,6 +13,7 @@ const hbs = exphbs.create({});
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -25,3 +28,4 @@ app.use(controllers);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on port ${PORT}`))
 });
+
