@@ -137,6 +137,11 @@ td img {
   border-bottom-color: rgba(255,255,255,0.15);
 }
 
+.trophy-cell {
+  color: #fff;
+  font-weight: 700;
+}
+
 .bi-trophy-fill {
   padding-right: 4px;
 }
