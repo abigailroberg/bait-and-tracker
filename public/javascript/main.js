@@ -5,7 +5,7 @@ const addDate = function() {
   document.getElementById("date").innerHTML = date;
 }
 
-// Add a line under a nav link to indicate the current page.Loop through all the navbar links and add the navbar-link-border class if its href matches with the current page
+// Add a line under a nav link to indicate the current page. Loop through all the navbar links and add the navbar-link-border class if its href matches with the current page
 const addNavBorder = function() {
   const currentPage = location.href;
   const navItems = document.querySelectorAll('.navbar-link');
@@ -31,16 +31,16 @@ const addTrophies = function() {
 
     switch (trophyCellsArray.indexOf(cell)) {
       case 0:
-        cell.innerHTML += `<i class="bi bi-trophy-fill gold"></i>${ranking}`;
+        cell.innerHTML = `<i class="bi bi-trophy-fill gold"></i>${ranking}`;
         break;
       case 1:
-        cell.innerHTML += `<i class="bi bi-trophy-fill silver"></i>${ranking}`;
+        cell.innerHTML = `<i class="bi bi-trophy-fill silver"></i>${ranking}`;
         break;
       case 2:
-        cell.innerHTML += `<i class="bi bi-trophy-fill bronze"></i>${ranking}`;
+        cell.innerHTML = `<i class="bi bi-trophy-fill bronze"></i>${ranking}`;
         break;
       default:
-        cell.innerHTML += ranking;
+        cell.innerHTML = ranking;
     }
   });
 }
