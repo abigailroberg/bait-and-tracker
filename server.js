@@ -4,7 +4,7 @@ const controllers = require('./controllers');
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 
-//const sequelize = require('./config/connection');
+const sequelize = require('./config/connection');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -21,10 +21,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(controllers);
 
 // turn on connection to db and server
-// sequelize.sync({ force: false }).then(() => {
-//   app.listen(PORT, () => console.log('Now listening'));
-// })
-
-app.listen(PORT, () => {
-  console.log(`API server now on port ${PORT}!`);
-});
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
+})

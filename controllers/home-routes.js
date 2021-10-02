@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
   const fishes = [
     {
       id: 1, 
-      length: 10,
+      length: 12,
       weight: 5,
       pictures: [
         'http://placekitten.com/48/36',
@@ -18,7 +18,38 @@ router.get('/', (req, res) => {
     },
     {
       id: 2, 
-      length: 12,
+      length: 10,
+      weight: 8,
+      pictures: [
+        'http://placekitten.com/48/36',
+        'http://placekitten.com/48/36',
+        'http://placekitten.com/48/36'
+      ]
+    },
+    {
+      id: 3, 
+      length: 8,
+      weight: 8,
+      pictures: [
+        'http://placekitten.com/48/36',
+        'http://placekitten.com/48/36',
+        'http://placekitten.com/48/36',
+        'http://placekitten.com/48/36'
+      ]
+    },
+    {
+      id: 4, 
+      length: 7,
+      weight: 8,
+      pictures: [
+        'http://placekitten.com/48/36',
+        'http://placekitten.com/48/36',
+        'http://placekitten.com/48/36'
+      ]
+    },
+    {
+      id: 5, 
+      length: 4,
       weight: 8,
       pictures: [
         'http://placekitten.com/48/36',
