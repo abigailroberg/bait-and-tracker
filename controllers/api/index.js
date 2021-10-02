@@ -1,9 +1,10 @@
-const router = require('express').Router()
+const express = require('express');
+const router = express.Router();
 
-const competitorRoutes = require('./competitor-routes')
-const fishRoutes = require('./fish-routes')
+const fishRoutes = require('./fish-routes');
+const competitorRoutes = require('./competitor-routes');
 
-router.use('/competitors', competitorRoutes)
-router.use('/fish', fishRoutes)
+router.use('/fishCaught', fishRoutes);
+router.use('/competitors', competitorRoutes);
 
-module.exports = router
+module.exports = router;
