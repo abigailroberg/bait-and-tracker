@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+
+const router = require('express').Router();
 const { Competitor, Fish } = require('../../models');
 
 //CRUD actions for Competitor model 
@@ -92,7 +92,7 @@ router.post('/login', (req, res) => {
       res.status(400).json({ message: 'no user with that email address' });
       return;
     }
-    console.log("LOOK I AM A CONSOLE LOG", req)
+    console.log("LOOK I AM A CONSOLE LOG", req.session)
 
     const validPassword = dbCompetitorData.checkPassword(req.body.password);
 
