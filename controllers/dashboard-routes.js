@@ -1,40 +1,39 @@
 const express = require('express');
 const router = express.Router();
-const { Competitor, Fish } = require('../../models');
+const sequelize = require('../config/connection');
+const { Competitor, Fish } = require('../models');
 
-const rankCompetitors = (...competitors) => {
-    
-    do{
+//this will eventually go into a utils folder...
+//WE may be able to do this without this function, by including ORDER BY statements in the sequelize literals below
+/* const rankCompetitors = (...competitors) => {
+    ranking code here...
 
-    } while (i < competitors.length);
-
-}
+*/
 
 //GET route for all competitors (including fish caught information) : /dashboard === /api/competitors
 router.get('/', (req, res) => {
     //get all competitors with corresponding fish caught for each competitor
     Competitor.findAll({
-        attributes: ['name'],
-        order: [['id', 'DESC']],
+        attributes: ['name', 
+                    [sequelize.literal('(SELECT COUNT(competitor_id) FROM fish WHERE competitor.id = fish.competitor_id)'), 'totalFish' ],
+                    [sequelize.literal('(SELECT SUM(length) FROM fish WHERE competitor.id = fish.competitor_id)'), 'totalLength' ]],
         include: [
             {
                 model: Fish,
-                attributes: ['length', 'picture',
-                //get the number of fish relative to the competitor
-                [sequalize.literal('(SELECT COUNT(id) FROM fish)'), 'totalFishes'],
-                //get the sum of all the fish in the 'fish' column
-                [sequalize.literal('(SELECT SUM(length) FROM fish)'), 'totalLength']
-                ]
+                attributes: ['length', 'picture', 'created_at', 'updated_at']
             }
         ]
-    })
+    }) 
     .then(dbCompetitorData => {
         //serialize the sequalize object
         const competitors = dbCompetitorData.map(competitor => competitor.get({ plain: true }));
+        console.log(competitors);
 
-        const rankedCompetitors = rankCompetitors(competitors);
+        //test this in insomnia...
+        res.json(competitors);
+        //const rankedCompetitors = rankCompetitors(competitors);
 
-        res.render('dashboard', {rankedCompetitors});
+        //res.render('dashboard', {rankedCompetitors});
     })
     .catch(err => {
         console.log(err);

@@ -2,14 +2,14 @@ const express = require('express');
 const controllers = require('./controllers/');
 
 // sequalize here
-const sequelize = require('./config/connection')
+const sequelize = require('./config/connection');
 
 // handlebars module import
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 
 const app = express();
-const PORT = proces.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,5 +23,5 @@ app.use(controllers);
 
 //server connection & encapsulate in db callback here...
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'))
+  app.listen(PORT, () => console.log(`Now listening on ${PORT}`))
 });
