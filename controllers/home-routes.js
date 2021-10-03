@@ -56,7 +56,12 @@ router.get('/competitor/:id', (req, res) => {
   });
 });
 
-router.get('/leaderboard', (req, res) => {
+
+
+
+// LEADER BOARD 
+
+router.get('/leaderboardbag', (req, res) => {
   //get all competitors with corresponding fish caught for each competitor
   Competitor.findAll({
       attributes: ['name', 
@@ -66,11 +71,10 @@ router.get('/leaderboard', (req, res) => {
       include: [
           {
               model: Fish,
-              attributes: ['length', 'picture', 'created_at', 'updated_at']
+              attributes: ['id', 'length', 'picture', 'created_at', 'updated_at']
           }
       ]
-      // ,
-      // order: ['totalLength', 'DESC']
+      
   }) 
   .then(dbCompetitorData => {
       //serialize the sequalize object
@@ -87,5 +91,29 @@ router.get('/leaderboard', (req, res) => {
       res.status(500).json(err);
   });
 });
+
+router.get('/leaderboardfish', (req, res) => {
+  //get all fish caught with corresponding competitor usernames
+  Fish.findAll({
+      attributes: ['id','length', 'weight', 'picture', 'competitor_id', 'created_at'],
+      order: [['length','DESC']],
+      include: [
+          {
+              model: Competitor,
+              attributes: ['name','id']
+          }
+      ]
+  })
+  .then(dbFishData => {
+    const singlefish = dbFishData.map(fishes =>fishes.get({plain:true}));
+    res.render('leaderboardfish',{singlefish});
+  })
+  .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+  });
+
+});
+
 
 module.exports = router;
