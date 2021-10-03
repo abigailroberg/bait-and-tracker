@@ -1,30 +1,27 @@
-<h1>Fishing Tournament</h1>
+
+<h1>{{competitor.name}}</h1>
 <h2 id="date">Current date</h2>
 
 <!-- Table -->
-{{#if fishes.length}}
+ {{!-- {#if competitor.fish.id}  --}}
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Fish Number</th>
-      <th scope="col">Angler</th>
       <th scope="col">Time Caught</th>
-      <th scope="col">Fish Length</th>
+      <th scope="col">Fish length</th>
       <th scope="col">Photos</th>
     </tr>
   </thead>
   <tbody>
     <!-- Loop through each fish and display a row -->
-    {{#each fishes as |fish|}}
+    {{#each competitor.fishes as |fish|}}
     <tr>
       <!-- TODO: Need some way to determine the ranking -->
       <th scope="row"> {{fish.id}} </th>
       <!-- TODO: Need to grab the name -->
-      <td>
-        <a href="/competitor/{{ fish.competitor.id }}">{{fish.competitor.name}}</a>
-      </td>
       <!-- TODO: Need to get totalFishes somehow --> 
-      {{!-- Removed total fishes, instead placed time caught --}}
+      {{!-- Removed total competitor.fishes, instead placed time caught --}}
       <td>{{fish.created_at}}</td> 
       <!-- REPLACE below with totalFishes --> 
       {{!-- <td>5</td> --}}
@@ -38,4 +35,4 @@
     {{/each}}
   </tbody>
   </table>
-  {{/if}}
+  {{!-- {{/if}} --}}
