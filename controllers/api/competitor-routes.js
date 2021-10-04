@@ -1,6 +1,5 @@
-const express = require('express');
-const router = express.Router();
-const { Competitor, Fish } = require('../../models');
+const router = require('express').Router()
+const { Competitor, Fish } = require('../../models')
 
 //CRUD actions for Competitor model 
 //relational db structure = (" one-to-many 'Competitor' -> 'Fish' ")
