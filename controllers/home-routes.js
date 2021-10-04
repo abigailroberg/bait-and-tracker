@@ -14,16 +14,22 @@ router.get('/', (req, res) => {
     })
     .then(dbCompetitorData => {
         let competitors = []
+        // loop through each competitor
         for(let i=0; i<dbCompetitorData.length; i++) {
+            // get the fish array for current competitor
             let fish = dbCompetitorData[i].get({ plain: true })  
+            // reset stats for current competitor
             let totalLength = 0
             let totalWeight = 0
             let fishCount = 0
+            // loop through the fish array of the current competitor
             for(let i=0; i<fish.fishes.length; i++) {
+                // aggregate total length, weight, and # of fish caught
                 totalLength = totalLength + Number(fish.fishes[i].length)
                 totalWeight = totalWeight + Number(fish.fishes[i].weight)
                 fishCount++
             }
+            // create an object for the current competior
             const totals = {
                 'id': dbCompetitorData[i].id,
                 'name': dbCompetitorData[i].name,
@@ -35,7 +41,7 @@ router.get('/', (req, res) => {
             }
             competitors.push(totals)
         }
-        res.render('homepage', competitors)
+        res.render('homepage', { competitors })
     })
     .catch(err => {
         console.log(err);
