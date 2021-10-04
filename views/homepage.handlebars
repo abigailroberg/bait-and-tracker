@@ -1,9 +1,10 @@
 <h1>Fishing Tournament</h1>
+<!-- This date is replaced by the current date from the main.js file -->
 <h2 id="date">Current date</h2>
 
 <!-- Table -->
 {{#if fishes.length}}
-<table class="table">
+<table class="table table-dark table-striped table-responsive">
   <thead>
     <tr>
       <th scope="col">Fish Number</th>
@@ -18,17 +19,26 @@
     {{#each fishes as |fish|}}
     <tr>
       <!-- TODO: Need some way to determine the ranking -->
-      <th scope="row"> {{fish.id}} </th>
+
+      <th class="trophy-cell" scope="row"></th>
       <!-- TODO: Need to grab the name -->
       <td>
-        <a href="/competitor/{{ fish.competitor.id }}">{{fish.competitor.name}}</a>
+        <!-- If the user is logged in, show the names as links. Otherwise show them as static text -->
+        {{#if loggedIn}}
+        <a href="#">Bobby Smith</a>
+        {{else}}
+        Bobby Smith
+        {{/if}}
       </td>
       <!-- TODO: Need to get totalFishes somehow --> 
       {{!-- Removed total fishes, instead placed time caught --}}
       <td>{{fish.created_at}}</td> 
       <!-- REPLACE below with totalFishes --> 
-      {{!-- <td>5</td> --}}
-      <td>{{fish.length}}</td>
+
+      <td>5</td>
+      <!-- TODO: Need to get the total length of all the fish caught by the competitor -->
+      <td>{{fish.length}}"</td>
+
       <td>
         <div>
           <img src={{fish.picture}} alt="">
