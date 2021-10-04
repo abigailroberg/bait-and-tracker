@@ -1,7 +1,7 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
+const sequelize = require('../config/connection');
+const {Competitor, Fish} = require ('../models')
 
-//render app homepage
 router.get('/', (req, res) => {
     Competitor.findAll({
         attributes: ['id', 'name', 'email', 'phone'],
