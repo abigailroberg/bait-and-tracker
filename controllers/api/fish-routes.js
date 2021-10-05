@@ -54,19 +54,22 @@ router.get('/:id', (req, res) => {
 });
 
 //POST route to add new fish caught : /api/fishCaught
-router.post('/', ({body}, res) => {
+router.post('/', (req, res) => {
  //expect {length: 'DECIMAL', weight 'DECIMAL', competitor_id: 'INTEGER', picture: 'TEXT'}
+ if(req.session) {
     Fish.create({
-        length: body.length,
-        weight: body.weight,
-        competitor_id: body.competitor_id,
-        picture: body.picture
+        length: req.body.length,
+        weight: req.body.weight,
+        competitor_id: req.session.id,
+        picture: req.body.picture
     })
     .then(dbFishData => res.json(dbFishData))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
     });
+ }   
+ 
 });
 
 //PUT route to update fish caught by id (competitor fish affiliation) : /api/fishCaught/:id
