@@ -3,45 +3,48 @@
 <h2 id="date">Current date</h2>
 
 <!-- Table -->
-{{#if competitors.length}}
+{{#if anglers.length}}
 <table class="table table-dark table-striped table-responsive">
   <thead>
     <tr>
-      <th scope="col">Fish Number</th>
+      <th scope="col">Place</th>
       <th scope="col">Angler</th>
-      <th scope="col">Time Caught</th>
-      <th scope="col">Fish Length</th>
-      <th scope="col">Photos</th>
+      <th scope="col">Total Fish</th>
+      <th scope="col">Bag Length</th>
+      <th scope="col">Bag Weight</th>
+      <th scope="col">Photo</th>
     </tr>
   </thead>
   <tbody>
-    <!-- Loop through each fish and display a row -->
-    {{#each competitors as |competitor|}}
+  
+    <!-- Loop through each competitor and display a row -->
+    {{#each anglers as |angler|}}
+
     <tr>
       <!-- TODO: Need some way to determine the ranking -->
 
       <th class="trophy-cell" scope="row"></th>
-      <!-- TODO: Need to grab the name -->
+      <!-- Get name of competitor -->
       <td>
         <!-- If the user is logged in, show the names as links to link to their profile. Otherwise show them as static text -->
         {{#if loggedIn}}
-        <a href="/competitor/{{ competitor.id }}">{{competitor.name}}</a>
+        <a href="#">{{angler.name}}</a>
         {{else}}
-        {{competitor.name}}
+        {{angler.name}}
         {{/if}}
       </td>
-      <!-- TODO: Need to get totalFishes somehow --> 
-      {{!-- Removed total fishes, instead placed time caught --}}
-      <td>{{competitor.fish_caught}}</td> 
-      <!-- REPLACE below with totalFishes --> 
+      <!-- Get # of fish caught --> 
+      <td>{{angler.fish_caught}}</td>
 
-      <td>5</td>
-      <!-- TODO: Need to get the total length of all the fish caught by the competitor -->
-      <td>{{competitor.total_length}}"</td>
+      <!-- Get total bag length -->
+      <td>{{angler.total_length}}"</td>
+
+      <!-- Get total bag weight -->
+      <td>{{angler.total_weight}} lbs.</td>
 
       <td>
         <div>
-          <img src={{fish.picture}} alt="">
+          <img src={{angler.picture}} alt="">
         </div>
       </td>
     </tr>
