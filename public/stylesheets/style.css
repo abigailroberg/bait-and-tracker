@@ -51,8 +51,14 @@ th {
   color: var(--light-gray);
 }
 
-.btn-primary {
+.btn-primary, .btn-primary:hover {
   background-color: var(--blue);
+  transition: opacity 0.3s;
+}
+
+.btn-primary:hover {
+  opacity: 0.85;
+  transition: opacity 0.3s;
 }
 
 /* Trophies */
