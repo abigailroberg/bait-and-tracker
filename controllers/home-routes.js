@@ -119,4 +119,10 @@ router.get('/competitor/:id', (req, res) => {
     });
   });
 
+// new fish display
+router.get('/add', (req, res) => {
+
+    res.render('add-fish')
+})
+
 module.exports = router;
