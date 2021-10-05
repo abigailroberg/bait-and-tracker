@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Competitor, Fish } = require ('../models')
+const { Competitor, Fish } = require ('../models');
 
 router.get('/', (req, res) => {
     Competitor.findAll({
@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
                 // aggregate total length, weight, and # of fish caught
                 totalLength = totalLength + Number(fish.fishes[i].length)
                 totalWeight = totalWeight + Number(fish.fishes[i].weight)
-                fishCount++
+                fishCount++ 
             }
             // create an object for the current competior
             const anglerObj = {
@@ -41,8 +41,13 @@ router.get('/', (req, res) => {
                 // get first fish picture
                 'picture': fish.fishes[0].picture
             }
+            // add object to array
             anglers.push(anglerObj)
         }
+        // order array by bag length
+        anglers = anglers.sort(function (a, b) {
+            return b.total_length - a.total_length })
+        // render homepage leaderboard
         res.render('homepage', { anglers })
     })
     .catch(err => {
