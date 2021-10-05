@@ -16,7 +16,7 @@
   </thead>
   <tbody>
     <!-- Loop through each fish and display a row -->
-    {{#each competitors as |fish|}}
+    {{#each competitors as |competitor|}}
     <tr>
       <!-- TODO: Need some way to determine the ranking -->
 
@@ -25,19 +25,19 @@
       <td>
         <!-- If the user is logged in, show the names as links. Otherwise show them as static text -->
         {{#if loggedIn}}
-        <a href="#">Bobby Smith</a>
+        <a href="#">{{competitor.name}}</a>
         {{else}}
         Bobby Smith
         {{/if}}
       </td>
       <!-- TODO: Need to get totalFishes somehow --> 
       {{!-- Removed total fishes, instead placed time caught --}}
-      <td>{{fish.created_at}}</td> 
+      <td>{{competitor.fish_caught}}</td> 
       <!-- REPLACE below with totalFishes --> 
 
       <td>5</td>
       <!-- TODO: Need to get the total length of all the fish caught by the competitor -->
-      <td>{{fish.length}}"</td>
+      <td>{{competitor.total_length}}"</td>
 
       <td>
         <div>
