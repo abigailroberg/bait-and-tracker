@@ -1,10 +1,9 @@
 {
   "name": "bait-and-tracker",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node server.js"
   },
   "repository": {
@@ -27,5 +26,9 @@
     "express-session": "^1.17.2",
     "mysql2": "^2.3.0",
     "sequelize": "^6.6.5"
+  },
+  "description": "",
+  "devDependencies": {
+    "jest": "^27.2.4"
   }
 }

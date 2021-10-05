@@ -3,6 +3,7 @@ const sequelize = require('../config/connection')
 
 class Fish extends Model {}
 
+// Need to mention that we need to handle the option to show multiple fish in the leaderboard
 Fish.init(
     {
         id: {
@@ -12,11 +13,11 @@ Fish.init(
             autoIncrement: true
         },
         length: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(10,2),
             allowNull: false
         },
         weight: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(10,2),
             allowNull: false
         },
         competitor_id: {

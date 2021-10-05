@@ -1,0 +1,40 @@
+
+<h1>{{competitor.name}}</h1>
+<h1>Total Bag Length : {{competitor.totalLength}}"</h1>
+<h2 id="date">Current date</h2>
+
+<!-- Table -->
+ {{!-- {#if competitor.fish.id}  --}}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Fish Number</th>
+      <th scope="col">Time Caught</th>
+      <th scope="col">Fish length</th>
+      <th scope="col">Photos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Loop through each fish and display a row -->
+    {{#each competitor.fishes as |fish|}}
+    <tr>
+      <!-- TODO: Need some way to determine the ranking -->
+      <th scope="row"> {{fish.id}} </th>
+      <!-- TODO: Need to grab the name -->
+      <!-- TODO: Need to get totalFishes somehow --> 
+      {{!-- Removed total competitor.fishes, instead placed time caught --}}
+      <td>{{fish.created_at}}</td> 
+      <!-- REPLACE below with totalFishes --> 
+      {{!-- <td>5</td> --}}
+      <td>{{fish.length}}</td>
+      <td>
+        <div>
+          <img src={{fish.picture}} alt="">
+        </div>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+  </table>
+
+  {{!-- {{/if}} --}}

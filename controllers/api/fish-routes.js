@@ -1,5 +1,4 @@
-const express =  require('express');
-const router = express.Router();
+const router = require('express').Router()
 const { Competitor, Fish } = require('../../models')
 
 //CRUD actions for Fish model 
@@ -10,7 +9,7 @@ const { Competitor, Fish } = require('../../models')
 router.get('/', (req, res) => {
     //get all fish caught with corresponding competitor usernames
     Fish.findAll({
-        attributes: ['length', 'weight', 'picture', 'competitor_id'],
+        attributes: ['length', 'weight', 'picture', 'competitor_id','created_at'],
         order: [['weight', 'DESC']],
         include: [
             {
