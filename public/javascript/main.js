@@ -11,7 +11,7 @@ const addNavBorder = function() {
   });
 }
 
-window.onload = function() {
-  addNavBorder();
-}
+
+addNavBorder();
+
 
