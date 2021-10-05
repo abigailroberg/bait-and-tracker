@@ -98,19 +98,71 @@ router.get('/:id', (req, res) => {
 });
 
 //POST route to add new competitors : /api/competitors
-router.post('/', ({body}, res) => {
-    //expect {name: 'STRING', email 'STRING', phone: 'STRING', username: 'STRING', password: 'STRING'}
-    Competitor.create({
-        name: body.name,
-        email: body.email,
-        phone: body.phone,
-        password: body.password
-    })
-    .then(dbCompetitorData => res.json(dbCompetitorData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
+router.post('/', (req, res) => {
+  //  expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+  Competitor.create({
+    name: req.body.name,
+    email: req.body.email,
+    phone: req.body.phone,
+    password: req.body.password
+  })
+  .then(dbCompetitorData => {
+    // req.session.save(() => {
+    //   req.session.user_id = dbCompetitorData.id;
+    //   req.session.email = dbCompetitorData.email;
+    //   req.session.loggedIn = true;
+
+    //   res.json(dbCompetitorData);
+    // });
+    res.json(dbCompetitorData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+// login route /api/competitors/login will expect {email: 'handymanny@gmail.com', password: 'password12345'}
+router.post('/login', (req, res) => {
+  Competitor.findOne({
+    where: {
+      email: req.body.email
+    }
+  }).then(dbCompetitorData => {
+    if (!dbCompetitorData) {
+      res.status(400).json({ message: 'no user with that email address' });
+      return;
+    }
+
+    const validPassword = dbCompetitorData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res.status(400).json({ message: 'incorrect password' });
+      return;
+    }
+
+    
+    req.session.save(() => {
+      req.session.user_id = dbCompetitorData.id;
+      req.session.email = dbCompetitorData.email;
+      req.session.loggedIn = true;
+
+      res.json({ user: dbCompetitorData, message: 'you are now logged in' });
     });
+   
+  });
+});
+
+// logout route /competitors/logout
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  else {
+    res.status(404).end();
+  }
 });
 
 //PUT route to update competitors by id : /api/competitors/:id
