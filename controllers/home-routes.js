@@ -2,6 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Competitor, Fish } = require ('../models');
 
+// homepage leaderboard display
 router.get('/', (req, res) => {
     Competitor.findAll({
         attributes: ['id', 'name', 'email', 'phone'],
@@ -54,6 +55,26 @@ router.get('/', (req, res) => {
         console.log(err);
         res.status(500).json(err);
     })
+})
+
+// login page display
+router.get('/login', (req, res) => {
+    if(req.session.loggedIn) {
+        res.redirect('/')
+        return
+    }
+
+    res.render('login')
+})
+
+// sognup page display
+router.get('/signup', (req, res) => {
+    if(req.session.loggedIn) {
+        res.redirect('/')
+        return
+    }
+
+    res.render('signup')
 })
 
 module.exports = router;
