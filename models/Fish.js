@@ -13,11 +13,11 @@ Fish.init(
             autoIncrement: true
         },
         length: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(10,2),
             allowNull: false
         },
         weight: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(10,2),
             allowNull: false
         },
         competitor_id: {
