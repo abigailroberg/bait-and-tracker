@@ -67,7 +67,7 @@ router.get('/login', (req, res) => {
     res.render('login')
 })
 
-// sognup page display
+// signup page display
 router.get('/signup', (req, res) => {
     if(req.session.loggedIn) {
         res.redirect('/')
@@ -75,54 +75,6 @@ router.get('/signup', (req, res) => {
     }
 
     res.render('signup')
-})
-
-// profile page display
-router.get('/competitor/:id', (req, res) => {
-    //get one competitor with corresponding fish caught data
-    Competitor.findOne({
-        where: {
-            id: req.params.id
-        },
-        attributes: [
-            'id', 
-            'name', 
-            'email', 
-            'phone', 
-            [sequelize.literal('(SELECT SUM(length) FROM fish WHERE competitor.id = fish.competitor_id)'), 'totalLength' ]
-        ],
-        include: [
-            {
-                model: Fish,
-                attributes: [
-                    'id', 
-                    'length', 
-                    'weight', 
-                    'picture',
-                    'created_at'
-                ]
-            }
-        ]
-    })
-    .then(dbCompetitorData => {
-        if(!dbCompetitorData){
-            res.status(404).json({ message: 'No competitor found with this id.'});
-            return;
-        }
-        const competitor = dbCompetitorData.get({ plain:true });
-        
-        res.render('profile', { competitor });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-  });
-
-// new fish display
-router.get('/add', (req, res) => {
-
-    res.render('add-fish')
 })
 
 module.exports = router;

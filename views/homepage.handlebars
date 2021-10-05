@@ -27,11 +27,7 @@
       <!-- Get name of competitor -->
       <td>
         <!-- If the user is logged in, show the names as links to link to their profile. Otherwise show them as static text -->
-        {{#if loggedIn}}
-        <a href="/competitor/{{angler.id}}">{{angler.name}}</a>
-        {{else}}
-        {{angler.name}}
-        {{/if}}
+        <a href="/profile/competitor/{{angler.id}}">{{angler.name}}</a>
       </td>
       <!-- Get # of fish caught --> 
       <td>{{angler.fish_caught}}</td>
