@@ -28,7 +28,7 @@
       <td>
         <!-- If the user is logged in, show the names as links to link to their profile. Otherwise show them as static text -->
         {{#if loggedIn}}
-        <a href="#">{{angler.name}}</a>
+        <a href="/competitor/{{angler.id}}">{{angler.name}}</a>
         {{else}}
         {{angler.name}}
         {{/if}}

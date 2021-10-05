@@ -1,0 +1,38 @@
+
+<h1>{{competitor.name}}</h1>
+<h1>Total Bag Length : {{competitor.totalLength}}"</h1>
+<h2 id="date">Current date</h2>
+
+<!-- Table -->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Time Caught</th>
+      <th scope="col">Fish Length</th>
+      <th scope="col">Fish Weight</th>
+      <th scope="col">Photo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Loop through each fish and display a row -->
+    {{#each competitor.fishes as |fish|}}
+    <tr>
+      {{!-- Fish ID --}}
+      <th scope="row"> {{fish.id}} </th>
+      {{!-- Time Caught --}}
+      <td>{{fish.created_at}}</td>
+      {{!-- Length --}}
+      <td>{{fish.length}}"</td>
+      {{!-- Weight --}}
+      <td>{{fish.weight}} lbs.</td>
+      <td>
+        {{!-- Photo --}}
+        <div>
+          <img src={{fish.picture}} alt="">
+        </div>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+  </table>
