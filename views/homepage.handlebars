@@ -23,11 +23,11 @@
       <th class="trophy-cell" scope="row"></th>
       <!-- TODO: Need to grab the name -->
       <td>
-        <!-- If the user is logged in, show the names as links. Otherwise show them as static text -->
+        <!-- If the user is logged in, show the names as links to link to their profile. Otherwise show them as static text -->
         {{#if loggedIn}}
-        <a href="#">{{competitor.name}}</a>
+        <a href="/competitor/{{ competitor.id }}">{{competitor.name}}</a>
         {{else}}
-        Bobby Smith
+        {{competitor.name}}
         {{/if}}
       </td>
       <!-- TODO: Need to get totalFishes somehow --> 

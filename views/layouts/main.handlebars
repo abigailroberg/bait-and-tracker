@@ -21,7 +21,7 @@
     <div class="container">
       <!-- Logo -->
       <div class="flex-fill">
-        <a class="navbar-brand" href="#"><img src='/fish.svg' alt=''/><span>Bait</span> & Tracker</a>
+        <a class="navbar-brand" href="/"><img src='/fish.svg' alt=''/><span>Bait</span> & Tracker</a>
       </div>
      
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +35,7 @@
           <!-- Only show the Profile link if the user is logged in -->
           {{#if loggedIn}}
             <li class="nav-item">
-              <a class="navbar-link" href="#">Profile</a>
+              <a class="navbar-link" href="/profile">Profile</a>
             </li>
           {{/if}}
           <!-- TODO: Need to check for logged in and logged out -->
@@ -60,5 +60,10 @@
 </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
   <script src="/javascript/main.js" async defer></script> 
+
+  {{#if loggedIn}}
+  <script src="/javascript/profile.js" async defer></script> 
+  {{/if}}
+
 </body>
 </html>
