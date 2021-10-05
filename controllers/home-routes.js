@@ -38,9 +38,7 @@ router.get('/', (req, res) => {
                 'phone': dbCompetitorData[i].phone,
                 'fish_caught': fishCount,
                 'total_length': totalLength,
-                'total_weight': totalWeight,
-                // get first fish picture
-                'picture': fish.fishes[0].picture
+                'total_weight': totalWeight
             }
             // add object to array
             anglers.push(anglerObj)
