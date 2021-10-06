@@ -1,4 +1,5 @@
-<form id='signup-form'>
+<div class="form-container">
+  <form id='signup-form'>
   <div class="form-group">
     <label for="name-signup">Name</label>
     <input type="text" class="form-control" id="name-signup" placeholder="Name">
@@ -17,8 +18,11 @@
   </div>
   <button type="submit" class="btn btn-primary signup-form">Submit</button>
 </form>
+  <div class="form-login-text">
+    <p>Already have an account?</p>
+    <a href="/login">Sign in instead</a>
+  </div>
 
-<p>Already have an account?</p>
-<a href="/login">Sign in instead</a>
+</div>
 
 <script src="/javascript/signup.js"></script>
