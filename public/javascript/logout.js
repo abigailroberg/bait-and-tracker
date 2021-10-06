@@ -1,6 +1,7 @@
 // When clicking on the logout link, take people to the homepage (does not have the logout button or profile in the nav)
 async function logout() {
-  const response = await fetch('/api/users/logout', {
+  console.log('LOGOUT FUNCTION EXECUTING')
+  const response = await fetch('/api/competitors/logout', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' }
   });
