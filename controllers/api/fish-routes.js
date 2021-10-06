@@ -9,7 +9,7 @@ const { Competitor, Fish } = require('../../models')
 router.get('/', (req, res) => {
     //get all fish caught with corresponding competitor usernames
     Fish.findAll({
-        attributes: ['length', 'weight', 'picture', 'competitor_id','created_at'],
+        attributes: ['id', 'length', 'weight', 'picture', 'competitor_id','created_at'],
         order: [['weight', 'DESC']],
         include: [
             {
