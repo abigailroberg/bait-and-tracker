@@ -43,9 +43,9 @@
             <!-- If the user has logged in, show the logout link, else show the login link-->
             {{#if loggedIn}}
             <a class="navbar-link" id="logout">Logout</a>
-            {{/if}}
+            {{else}}
             <a class="navbar-link" id="login" href="/login">Login</a>
-
+            {{/if}}
           </li>
         </ul>
       </div>

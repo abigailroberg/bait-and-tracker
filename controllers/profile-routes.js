@@ -36,7 +36,11 @@ router.get('/competitor/:id', (req, res) => {
         }
         const competitor = dbCompetitorData.get({ plain:true });
         
-        res.render('profile', { competitor });
+        res.render('profile', {
+            competitor,
+            loggedIn: req.session.loggedIn,
+            competitor_id: req.session.competitor_id
+        });
     })
     .catch(err => {
         console.log(err);
