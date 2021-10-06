@@ -2,11 +2,11 @@
 async function newFish(event) {
     event.preventDefault()
 
-    const length = document.querySelector('input[name="fish-length"]').value 
-    const weight = document.querySelector('input[name="fish-weight"]').value 
-    const picture = document.querySelector('input[name="fish-pic"]').value 
+    const length = document.querySelector('#fish-length').value 
+    const weight = document.querySelector('#fish-weight').value 
+    const picture = document.querySelector('#fish-pic').value 
     
-    const response = await fetch(`/api/fish`, {
+    const response = await fetch(`/api/fishCaught`, {
         method: 'post',
         body: JSON.stringify({
             length,

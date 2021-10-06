@@ -57,11 +57,12 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
  //expect {length: 'DECIMAL', weight 'DECIMAL', competitor_id: 'INTEGER', picture: 'TEXT'}
  if(req.session) {
+     console.log(`user: ${req.session.competitor_id}`)
     Fish.create({
         length: req.body.length,
         weight: req.body.weight,
-        competitor_id: req.session.id,
-        picture: req.body.picture
+        picture: req.body.picture,
+        competitor_id: req.session.competitor_id
     })
     .then(dbFishData => res.json(dbFishData))
     .catch(err => {
