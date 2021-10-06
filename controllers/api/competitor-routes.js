@@ -109,7 +109,7 @@ router.post('/', (req, res) => {
   .then(dbCompetitorData => {
       // start session
       req.session.save(() => {
-          req.session.user_id = dbCompetitorData.id,
+          req.session.competitor_id = dbCompetitorData.id,
           req.session.email = dbCompetitorData.email,
           req.session.loggedIn = true
       })
@@ -123,14 +123,12 @@ router.post('/', (req, res) => {
 
 // login route /api/competitors/login will expect {email: 'handymanny@gmail.com', password: 'password12345'}
 router.post('/login', (req, res) => {
-    console.log('running login route')
   Competitor.findOne({
     where: {
       email: req.body.email
     }
   }).then(dbCompetitorData => {
     if (!dbCompetitorData) {
-        console.log('not a user')
       res.status(400).json({ message: 'no user with that email address' });
       return;
     }
@@ -142,16 +140,16 @@ router.post('/login', (req, res) => {
       return;
     }
 
-    
     req.session.save(() => {
-      req.session.user_id = dbCompetitorData.id;
+      req.session.competitor_id = dbCompetitorData.id;
       req.session.email = dbCompetitorData.email;
-      req.session.loggedIn = true;     
-    });
-    res.json({ user: dbCompetitorData, message: 'you are now logged in' });
-   
+      req.session.loggedIn = true;
+      
+      res.json({ user: dbCompetitorData, message: 'you are now logged in' });
+    });   
   });
 });
+
 
 // logout route /competitors/logout
 router.post('/logout', (req, res) => {
