@@ -142,7 +142,7 @@ router.post('/login', (req, res) => {
 
     req.session.save(() => {
       req.session.competitor_id = dbCompetitorData.id;
-      req.session.email = dbCompetitorData.email;
+      req.session.name = dbCompetitorData.name;
       req.session.loggedIn = true;
       
       res.json({ user: dbCompetitorData, message: 'you are now logged in' });
