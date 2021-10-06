@@ -41,8 +41,10 @@
           <!-- TODO: Need to check for logged in and logged out -->
           <li class="nav-item">
             <!-- If the user has logged in, show the logout link, else show the login link-->
-              <button class="navbar-link" id="logout">Logout</button>
-              <a class="navbar-link" id="login" href="/login">Login</a>
+            {{#if loggedIn}}
+            <a class="navbar-link" id="logout">Logout</a>
+            {{/if}}
+            <a class="navbar-link" id="login" href="/login">Login</a>
 
           </li>
         </ul>
@@ -61,6 +63,7 @@
   <script src="/javascript/profile.js" async defer></script> 
   {{/if}}
 
+ <script src="/javascript/main.js" async defer></script> 
   <script src="/javascript/logout.js"></script>
 
 </body>
