@@ -24,6 +24,7 @@ router.get('/competitor/:id', (req, res) => {
                     'length', 
                     'weight', 
                     'picture',
+                    [sequelize.literal('(SELECT CURTIME())' ), 'timeofcatch' ],
                     'created_at'
                 ]
             }
