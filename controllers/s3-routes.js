@@ -1,8 +1,9 @@
 const router = require('express').Router();
-const { generateUploadURL } = require('../s3');
+const generateUploadURL = require('../s3');
 
-router.get('/s3URL', async (req, res) => {
+router.get('/', async (req, res) => {
     const url = await generateUploadURL()
+    console.log(url);
     res.send({url})
 })
 
