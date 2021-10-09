@@ -1,8 +1,8 @@
 require ('dotenv').config
 const AWS = require('aws-sdk');
 const crypto = require('crypto');
-const { promisfy } = require('util');
-const randomBytes = promisfy(crypto.randomBytes);
+const util = require('util');
+const randomBytes = util.promisify(crypto.randomBytes);
 
 const region = '';
 const bucketName = '';
