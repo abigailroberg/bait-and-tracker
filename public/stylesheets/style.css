@@ -36,9 +36,15 @@ a, p, td, th {
   font-size: 1em;
 }
 
-a {
+a, a:hover {
   color: var(--light-gray);
   font-weight: 700;
+  transition: opacity 0.25s;
+}
+
+a:hover {
+  opacity: 0.8;
+  transition: opacity 0.25s;
 }
 
 p, td {
@@ -53,12 +59,21 @@ th {
 
 .btn-primary, .btn-primary:hover {
   background-color: var(--blue);
-  transition: opacity 0.3s;
+  transition: opacity 0.25s;
+  font-weight: 600;
 }
 
-.btn-primary:hover {
+.btn-secondary, .btn-secondary:hover {
+  background-color: transparent;
+  border: 2px solid var(--blue);
+  color: var(--blue);
+  font-weight: 600;
+  transition: opacity 0.25s;
+}
+
+.btn-primary:hover, .btn-secondary:hover {
   opacity: 0.85;
-  transition: opacity 0.3s;
+  transition: opacity 0.25s;
 }
 
 /* Trophies */
@@ -101,6 +116,7 @@ th {
 }
 
 .navbar-link:hover {
+  cursor: pointer;
   opacity: 0.75;
 }
 
@@ -108,8 +124,9 @@ th {
   flex-grow: 0;
 }
 
-.navbar-brand {
+.navbar-brand, .navbar-brand:hover {
   font-weight: 400;
+  opacity: 1;
 }
 
 .navbar-brand span {
@@ -119,6 +136,18 @@ th {
 
 .navbar-bg {
   background-color: var(--darkest-gray);
+}
+
+/* Header */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-container a {
+  align-self: flex-end;
+  transform: translateY(-12px);
 }
 
 /* Table styles */
@@ -135,6 +164,11 @@ th {
 td img {
   border-radius: 4px;
   margin: 4px;
+  height: 50px;
+}
+
+.profile-fish {
+  height: 400px;
 }
 
 .table-dark {
@@ -191,6 +225,14 @@ form button {
   text-decoration: none;
 }
 
+label {
+  margin-top: 1em;
+  margin-bottom: 2px;
+}
+
+#image-form {
+  margin-bottom: 24px;
+}
 
 @media (min-width: 768px) {
   .table > :not(caption) > * > * {

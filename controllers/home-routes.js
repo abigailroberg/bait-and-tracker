@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Competitor, Fish } = require ('../models');
+const _ = require('lodash');
 
 // homepage leaderboard display
 router.get('/', (req, res) => {
@@ -23,13 +24,20 @@ router.get('/', (req, res) => {
             let totalLength = 0
             let totalWeight = 0
             let fishCount = 0
+            let fishImage = ''
             // loop through the fish array of the current competitor
             for(let i=0; i<fish.fishes.length; i++) {
                 // aggregate total length, weight, and # of fish caught
                 totalLength = totalLength + Number(fish.fishes[i].length)
                 totalWeight = totalWeight + Number(fish.fishes[i].weight)
                 fishCount++ 
+                //include this logic here using lodash utility to veryify picture property on fish is not undefined
+                if(_.get(fish, `fishes[${i}]`, 'undefined') !== 'undefined'){
+                    console.log('I am here');
+                    fishImage = fish.fishes[i].picture;
+                }
             }
+
             // create an object for the current competior
             const anglerObj = {
                 'id': dbCompetitorData[i].id,
@@ -38,8 +46,10 @@ router.get('/', (req, res) => {
                 'phone': dbCompetitorData[i].phone,
                 'fish_caught': fishCount,
                 'total_length': totalLength,
-                'total_weight': totalWeight
+                'total_weight': totalWeight,
+                'picture': fishImage
             }
+
             // add object to array
             anglers.push(anglerObj)
         }
@@ -66,7 +76,7 @@ router.get('/login', (req, res) => {
         return
     }
 
-    res.render('login')
+    res.render('login', { competitor_id: req.session.competitor_id })
 })
 
 // signup page display

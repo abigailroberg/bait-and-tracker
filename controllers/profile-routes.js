@@ -24,6 +24,7 @@ router.get('/competitor/:id', (req, res) => {
                     'length', 
                     'weight', 
                     'picture',
+                    [sequelize.literal('(SELECT CURTIME())' ), 'timeofcatch' ],
                     'created_at'
                 ]
             }
@@ -53,7 +54,9 @@ router.get('/competitor/:id', (req, res) => {
 router.get('/add', (req, res) => {
 
     res.render('add-fish', {
-        name: req.session.name
+        name: req.session.name,
+        loggedIn: req.session.loggedIn,
+        competitor_id: req.session.competitor_id
     })
 })
 
