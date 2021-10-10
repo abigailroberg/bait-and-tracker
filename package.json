@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/abigailroberg/bait-and-tracker#readme",
   "dependencies": {
+    "aws-sdk": "^2.1004.0",
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.2",
     "dotenv": "^10.0.0",
