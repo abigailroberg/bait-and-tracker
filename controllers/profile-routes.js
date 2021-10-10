@@ -54,7 +54,8 @@ router.get('/competitor/:id', (req, res) => {
 router.get('/add', (req, res) => {
 
     res.render('add-fish', {
-        name: req.session.name
+        name: req.session.name,
+        loggedIn: req.session.loggedIn,
     })
 })
 
