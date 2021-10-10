@@ -76,7 +76,7 @@ router.get('/login', (req, res) => {
         return
     }
 
-    res.render('login')
+    res.render('login', { competitor_id: req.session.competitor_id })
 })
 
 // signup page display
