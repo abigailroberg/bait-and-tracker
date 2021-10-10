@@ -1,24 +1,22 @@
-<h1>New Catch for {{name}}</h1>
 <div class='form-container'>
+  <h1>New Catch for {{name}}</h1>
     <form id='new-fish-form'>
-        <div>
+        <div class="form-group">
             <label for='fish-length' class='text-white'>Length(in.):</label>
-            <input type='number' id='fish-length' />
+            <input type='number' class="form-control" id='fish-length' />
         </div>
-        <div>
+        <div class="form-group">
             <label for='fish-weight' class='text-white'>Weight(lbs.):</label>
-            <input type='number' id='fish-weight' />
+            <input type='number' class="form-control" id='fish-weight' />
         </div>
-
-        <button id='new-fish-form' type='submit'>Add Catch!</button>
     </form>
+    <!--Fish Image Upload Form-->
+    <label class='text-white'>Upload your Fish!</label>
+    <form id="image-form">
+        <input id="image-input" type="file" accept="image/*">
+        <button class="btn btn-secondary" type="submit">Upload</button>
+    </form>
+    <button class="btn btn-primary" id='new-fish-form' type='submit'>Add your catch!</button>
 </div>
-
-<!--Fish Image Upload Form-->
-<h2>Upload your Fish!</h2>
-<form id="image-form">
-    <input id="image-input" type="file" accept="image/*">
-    <button type="submit">Upload</button>
-  </form>
 
 <script src="/javascript/fish.js"></script>

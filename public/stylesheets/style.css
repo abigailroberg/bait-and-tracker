@@ -47,7 +47,6 @@ a:hover {
   transition: opacity 0.25s;
 }
 
-
 p, td {
   color: #fff;
   font-weight: 700;
@@ -64,7 +63,15 @@ th {
   font-weight: 600;
 }
 
-.btn-primary:hover {
+.btn-secondary, .btn-secondary:hover {
+  background-color: transparent;
+  border: 2px solid var(--blue);
+  color: var(--blue);
+  font-weight: 600;
+  transition: opacity 0.25s;
+}
+
+.btn-primary:hover, .btn-secondary:hover {
   opacity: 0.85;
   transition: opacity 0.25s;
 }
@@ -218,6 +225,14 @@ form button {
   text-decoration: none;
 }
 
+label {
+  margin-top: 1em;
+  margin-bottom: 2px;
+}
+
+#image-form {
+  margin-bottom: 24px;
+}
 
 @media (min-width: 768px) {
   .table > :not(caption) > * > * {
