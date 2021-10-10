@@ -64,7 +64,27 @@ async function newFish(event) {
         alert(response.statusText)
     }
 }}
+
+
+// Show the modal
+const addFishButton = document.getElementById("fishButton");
+const addFishButton = document.getElementById("fishButtonProfile");
+
+const addFishModal = document.getElementById("fishModal");
+const fishModalClose = document.getElementById("fishModalClose");
+
+const showModal = function() {
+  addFishModal.classList.add('show');
+}
+
+const hideModal = function() {
+  addFishModal.classList.remove('show');
+}
+
+addFishButton.addEventListener('click', showModal);
+fishModalClose.addEventListener('click', hideModal);
     
+
 //image upload event listener
 document.querySelector('#image-form').addEventListener('submit', newFishImage);
 

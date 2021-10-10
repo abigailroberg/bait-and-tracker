@@ -51,11 +51,11 @@ router.get('/competitor/:id', (req, res) => {
   });
   
 // new fish display
-router.get('/add', (req, res) => {
+// router.get('/add', (req, res) => {
 
-    res.render('add-fish', {
-        name: req.session.name
-    })
-})
+//     res.render('add-fish', {
+//         name: req.session.name
+//     })
+// })
 
 module.exports = router

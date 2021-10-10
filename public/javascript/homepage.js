@@ -5,7 +5,6 @@ const addDate = function() {
   document.getElementById("date").innerHTML = date;
 }
 
-
 // Get all the trophy cells
 const trophyCells = document.querySelectorAll(".trophy-cell");
 

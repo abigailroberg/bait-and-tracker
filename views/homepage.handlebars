@@ -6,9 +6,13 @@
   </div>
   <!-- button for new fish -->
   {{#if loggedIn}}
-  <a href="/profile/add"><button class="btn btn-primary">Upload your catch!</button></a>
+    <button type="button" class="btn btn-primary" id="fishButton" data-toggle="modal" data-target="#fishModal">
+        Upload your catch!
+    </button>
   {{/if}}
 </div>
+
+{{> add-fish }}
 
 <!-- Table -->
 {{#if anglers.length}}
@@ -58,3 +62,4 @@
   {{/if}}
 
   <script src="/javascript/homepage.js" async defer></script> 
+  <script src="/javascript/fish.js" async defer></script> 

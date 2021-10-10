@@ -218,6 +218,11 @@ form button {
   text-decoration: none;
 }
 
+.show {
+  display: initial;
+  opacity: 1;
+}
+
 
 @media (min-width: 768px) {
   .table > :not(caption) > * > * {
