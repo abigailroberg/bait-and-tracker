@@ -2,6 +2,11 @@
 <!-- This date is replaced by the current date from the main.js file -->
 <h2 id="date">Current date</h2>
 
+<!-- button for new fish -->
+{{#if loggedIn}}
+<a href="/profile/add">Upload your latest Catch!</a>
+{{/if}}
+
 <!-- Table -->
 {{#if anglers.length}}
 <table class="table table-dark table-striped table-responsive">

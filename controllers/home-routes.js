@@ -48,7 +48,11 @@ router.get('/', (req, res) => {
         anglers = anglers.sort(function (a, b) {
             return b.total_length - a.total_length })
         // render homepage leaderboard
-        res.render('homepage', { anglers })
+        res.render('homepage', { 
+          anglers,
+          loggedIn: req.session.loggedIn,
+          competitor_id: req.session.competitor_id
+        })
     })
     .catch(err => {
         console.log(err);

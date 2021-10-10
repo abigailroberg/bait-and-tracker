@@ -35,18 +35,17 @@
           <!-- Only show the Profile link if the user is logged in -->
           {{#if loggedIn}}
             <li class="nav-item">
-              <a class="navbar-link" href="/profile">Profile</a>
+              <a class="navbar-link" href="/profile/competitor/{{competitor_id}}">Profile</a>
             </li>
           {{/if}}
           <!-- TODO: Need to check for logged in and logged out -->
           <li class="nav-item">
             <!-- If the user has logged in, show the logout link, else show the login link-->
             {{#if loggedIn}}
-              <a class="navbar-link" id="logout" href="#">Logout</a>
+            <a class="navbar-link" id="logout">Logout</a>
             {{else}}
-              <a class="navbar-link" id="login" href="/login">Login</a>
+            <a class="navbar-link" id="login" href="/login">Login</a>
             {{/if}}
-
           </li>
         </ul>
       </div>
@@ -63,6 +62,9 @@
   {{#if loggedIn}}
   <script src="/javascript/profile.js" async defer></script> 
   {{/if}}
+
+ <script src="/javascript/main.js" async defer></script> 
+  <script src="/javascript/logout.js"></script>
 
 </body>
 </html>

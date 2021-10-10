@@ -36,7 +36,12 @@ router.get('/competitor/:id', (req, res) => {
         }
         const competitor = dbCompetitorData.get({ plain:true });
         
-        res.render('profile', { competitor });
+        res.render('profile', {
+            competitor,
+            loggedIn: req.session.loggedIn,
+            competitor_id: req.session.competitor_id,
+            name: req.session.name
+        });
     })
     .catch(err => {
         console.log(err);
@@ -47,7 +52,9 @@ router.get('/competitor/:id', (req, res) => {
 // new fish display
 router.get('/add', (req, res) => {
 
-    res.render('add-fish')
+    res.render('add-fish', {
+        name: req.session.name
+    })
 })
 
 module.exports = router

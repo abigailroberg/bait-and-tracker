@@ -110,10 +110,11 @@ router.post('/', (req, res) => {
       // start session
       req.session.save(() => {
           req.session.competitor_id = dbCompetitorData.id,
-          req.session.email = dbCompetitorData.email,
+          req.session.name = dbCompetitorData.name,
           req.session.loggedIn = true
+
+          res.json(dbCompetitorData);
       })
-    res.json(dbCompetitorData);
   })
   .catch(err => {
     console.log(err);
@@ -142,7 +143,7 @@ router.post('/login', (req, res) => {
 
     req.session.save(() => {
       req.session.competitor_id = dbCompetitorData.id;
-      req.session.email = dbCompetitorData.email;
+      req.session.name = dbCompetitorData.name;
       req.session.loggedIn = true;
       
       res.json({ user: dbCompetitorData, message: 'you are now logged in' });

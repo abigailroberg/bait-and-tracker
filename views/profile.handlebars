@@ -4,7 +4,9 @@
 <h2 id="date">Current date</h2>
 
 <!-- button for new fish -->
-<a href="/profile/add">Upload a Catch!</a>
+{{#if loggedIn}}
+<a href="/profile/add">Upload your latest Catch!</a>
+{{/if}}
 
 <!-- Table -->
 <table class="table">
