@@ -1,15 +1,16 @@
-
-<h1>{{competitor.name}}</h1>
-<h1>Total Bag Length : {{competitor.totalLength}}"</h1>
-<h2 id="date">Current date</h2>
-
-<!-- button for new fish -->
-{{#if loggedIn}}
-<a href="/profile/add">Upload your latest Catch!</a>
-{{/if}}
+<div class="header-container">
+  <div>
+    <h1>{{competitor.name}}</h1>
+    <h2>Total Bag Length : {{competitor.totalLength}}"</h2>
+  </div>
+  <!-- button for new fish -->
+  {{#if loggedIn}}
+  <a href="/profile/add"><button class="btn btn-primary">Upload your catch!</button></a>
+  {{/if}}
+</div>
 
 <!-- Table -->
-<table class="table">
+<table class="table table-dark table-striped table-responsive">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -26,7 +27,7 @@
       {{!-- Fish ID --}}
       <th scope="row"> {{fish.id}} </th>
       {{!-- Time Caught --}}
-      <td>{{fish.created_at}}</td>
+      <td>{{fish.timeofcatch}}</td>
       {{!-- Length --}}
       <td>{{fish.length}}"</td>
       {{!-- Weight --}}
@@ -34,7 +35,7 @@
       <td>
         {{!-- Photo --}}
         <div>
-          <img src={{fish.picture}} alt="">
+          <img class="profile-fish" src={{fish.picture}} alt="">
         </div>
       </td>
     </tr>
