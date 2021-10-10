@@ -66,7 +66,7 @@ async function newFish(event) {
 }}
     
 //image upload event listener
-document.querySelector('#image-form').addEventListener('submit', newFishImage);
+document.querySelector('#image-form').addEventListener('click', newFishImage);
 
 // event listener
-document.querySelector('#new-fish-form').addEventListener('submit', newFish);
+document.querySelector('#new-fish-form').addEventListener('click', newFish);
