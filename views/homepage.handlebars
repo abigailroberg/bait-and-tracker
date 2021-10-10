@@ -1,11 +1,14 @@
-<h1>Fishing Tournament</h1>
-<!-- This date is replaced by the current date from the main.js file -->
-<h2 id="date">Current date</h2>
-
-<!-- button for new fish -->
-{{#if loggedIn}}
-<a href="/profile/add">Upload your latest Catch!</a>
-{{/if}}
+<div class="header-container">
+  <div>
+    <h1>Fishing Tournament</h1>
+    <!-- This date is replaced by the current date from the main.js file -->
+    <h2 id="date">Current date</h2>
+  </div>
+  <!-- button for new fish -->
+  {{#if loggedIn}}
+  <a href="/profile/add"><button class="btn btn-primary">Upload your catch!</button></a>
+  {{/if}}
+</div>
 
 <!-- Table -->
 {{#if anglers.length}}
