@@ -1,9 +1,10 @@
 const imageForm = document.querySelector('#image-form')
 const imageInput = document.querySelector('#image-input')
-const length = document.querySelector('#fish-length').value 
-const weight = document.querySelector('#fish-weight').value 
-const picture = document.querySelector('#fish-pic').value
+//const picture = document.querySelector('#fish-pic').value
 
+const imageData = {
+    imageURL: ''
+};
 
 async function newFishImage(event) {
 event.preventDefault()
@@ -25,6 +26,8 @@ event.preventDefault()
 
   imageURL = url.split('?')[0]
   console.log(imageURL)
+  imageData.imageURL = imageURL;
+  console.log(imageData.imageURL);
 
   const img = document.createElement("img")
   img.src = imageURL
@@ -33,17 +36,24 @@ event.preventDefault()
 
 // function to call api and create a new fish
 async function newFish(event) {
-    
-
+    const length = document.querySelector('#fish-length').value 
+    const weight = document.querySelector('#fish-weight').value 
     event.preventDefault() 
-    const response = await fetch(`/api/fishCaught`, {
-        method: 'post',
-        body: JSON.stringify({
-            length,
-            weight,
-            //store URL in the fish object
-            picture: image.imageURL
-        }),
+
+    console.log(imageData.imageURL);
+
+    if(!imageData.imageURL){
+        window.alert('you forgot to upload your fish image!');
+        return
+    } else {
+        const response = await fetch(`/api/fishCaught`, {
+            method: 'post',
+            body: JSON.stringify({
+                length,
+                weight,
+                //store URL in the fish object
+                picture: imageData.imageURL
+            }),
         headers: {
             'Content-Type': 'application/json'
         }
@@ -53,8 +63,10 @@ async function newFish(event) {
     } else {
         alert(response.statusText)
     }
-}
+}}
+    
 //image upload event listener
-document.querySelector('#image-form').addEventListener('submit', newFishImage)
+document.querySelector('#image-form').addEventListener('submit', newFishImage);
+
 // event listener
-document.querySelector('#new-fish-form').addEventListener('submit', newFish)
+document.querySelector('#new-fish-form').addEventListener('submit', newFish);
