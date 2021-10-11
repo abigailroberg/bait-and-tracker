@@ -1,7 +1,7 @@
 
 # Bait and Tracker
 
-Fishing tournament application that allows users to register the weight, length and picture of the fish caught. The application shows 3 different leaderboards total bag length, longest and heaviest fish. 
+A fishing tournament catch tracker allowing anglers to see updated standings, number of fish caught, leaderboards sorted by total fish length, and more.
 
 ## Authors
 
@@ -14,33 +14,32 @@ Fishing tournament application that allows users to register the weight, length 
   
 ## Demo
 
-Insert gif or link to demo
+[Walkthrough Demo](https://watch.screencastify.com/v/zw3cs4txEIpn0pZPGJzj)
 
   
 ## Screenshots
 
-![App Screenshot](https://user-images.githubusercontent.com/85845397/136133916-514562a4-5a00-4c3e-ad5f-140034aa5ca1.jpg)
+![App Screenshot](https://user-images.githubusercontent.com/85845397/136718985-b772651f-a22b-443e-992c-884f7ddbf6aa.jpg)
 
-![App Screenshot](https://user-images.githubusercontent.com/85845397/136134041-55947490-56e4-4cf8-9992-f6d989beba8e.jpg)
+![App Screenshot](https://user-images.githubusercontent.com/85845397/136719038-67ea36b6-6127-411c-88c6-d53a13fcca3f.jpg)
+
+![App Screenshot](https://user-images.githubusercontent.com/85845397/136719214-f61465c3-6314-424d-a5d9-2cd996708b6e.jpg)
+
 
   
 ## Deployment
 
-Deployed to Heroku
+Deployed to:
 
-link:
+[Heroku](https://boiling-hamlet-94098.herokuapp.com/)
 
   
 ## Features
 
 - Sort leaderboard by bag length (total length of all fish caught)
 - Upload fish catch to profile
+- Upload photo of fish and displays on leaderboard
 - Track number of fish caught
 - Responsive for mobile
-
-  
-## Documentation
-
-[Documentation](https://linktodocumentation)
 
   
