@@ -1,7 +1,7 @@
 
 # Bait and Tracker
 
-A fishing tournament catch tracker allowing anglers to see updated standings, number of fish caught, leaderboards sorted by total fish length, and more.
+Fishing tournament application that allows users to register the weight, length and picture of the fish caught. The application shows 3 different leaderboards total bag length, longest and heaviest fish. 
 
 ## Authors
 
